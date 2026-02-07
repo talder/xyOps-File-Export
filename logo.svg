@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8E2DE2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A00E0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg1)" rx="80"/>
+  
+  <!-- FILE Text -->
+  <text x="256" y="105" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle">FILE</text>
+  
+  <!-- Hexagon Badge -->
+  <polygon points="256,135 350,190 350,300 256,355 162,300 162,190" fill="white" opacity="0.15" stroke="white" stroke-width="3"/>
+  <polygon points="256,155 330,200 330,290 256,335 182,290 182,200" fill="white" opacity="0.9"/>
+  
+  <!-- Document Icon Inside Hexagon -->
+  <rect x="215" y="180" width="70" height="90" fill="#8E2DE2" rx="5"/>
+  <rect x="205" y="170" width="70" height="90" fill="#6B20B0" rx="5"/>
+  <path d="M205 170 h50 l20 20 v70 a5 5 0 0 1 -5 5 h-60 a5 5 0 0 1 -5 -5 v-85 a5 5 0 0 1 5 -5" fill="#9D3EE8"/>
+  <path d="M255 170 v20 h20" fill="none" stroke="#6B20B0" stroke-width="2"/>
+  <!-- Lines on document -->
+  <rect x="215" y="200" width="45" height="5" fill="white" opacity="0.8" rx="2"/>
+  <rect x="215" y="215" width="45" height="5" fill="white" opacity="0.6" rx="2"/>
+  <rect x="215" y="230" width="30" height="5" fill="white" opacity="0.4" rx="2"/>
+  
+  <!-- Export Arrow Badge -->
+  <circle cx="295" cy="295" r="28" fill="#00E676"/>
+  <path d="M295 280 l15 15 h-10 v15 h-10 v-15 h-10 z" fill="white" transform="rotate(180 295 295)"/>
+  
+  <!-- Export Text -->
+  <text x="256" y="415" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white" text-anchor="middle">Export</text>
+  <text x="256" y="465" font-family="Arial, sans-serif" font-size="28" font-weight="500" fill="white" text-anchor="middle" opacity="0.85">Multi-Format</text>
+</svg>
