@@ -84,6 +84,16 @@
 						"value": "",
 						"variant": "text",
 						"required": false
+					},
+					{
+						"id": "transforms",
+						"title": "Data Transforms (YAML)",
+						"type": "code",
+"caption": "Optional YAML configuration for data transformations. Transforms are applied in order (pipeline). 25 transforms available including filter, select, rename, sort, compute, group, mask, if, set, and more. See README for full documentation.",
+						"locked": false,
+						"value": "",
+						"variant": "yaml",
+						"required": false
 					}
 				],
 				"notes": "",
