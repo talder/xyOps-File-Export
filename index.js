@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * xyOps File Export Action Plugin
+ * xyOps File Export Action Plugin (c) 2026 Tim Alderweireldt
  * 
  * Exports job input data to CSV, HTML, or JSON file format.
  * Supports optional timestamp and unique identifier in filename.
