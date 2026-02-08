@@ -1445,13 +1445,17 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - Plugin: xyOps File Export
 - Year: 2026
 
-## cknowledgments
+## Acknowledgments
 
 - **xyOps team** - For the automation platform
 - **exceljs** - For Excel file generation
 - **pdfkit** - For PDF document generation
 
 ## Version History
+
+### v1.4.1 (2026-02-08)
+- Fixing transparency of logo
+- Fixed typo
 
 ### v1.4.0 (2026-02-07)
 - **5 NEW Advanced Transforms!** Now 25 total transforms available
