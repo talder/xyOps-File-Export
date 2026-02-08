@@ -3,20 +3,20 @@
 
 # xyOps File Export Plugin
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/talder/xyOps-File-Export/releases)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/talder/xyOps-File-Export/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-14.0+-green.svg)](https://nodejs.org)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)]()
 
 A versatile xyOps Action Plugin that exports job output data to multiple file formats including JSON, CSV, HTML, XML, Markdown, YAML, Plain Text, Excel, PDF, and HL7 healthcare formats. Now with powerful **data transformation** capabilities!
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 **USE AT YOUR OWN RISK.** This software is provided "as is", without warranty of any kind, express or implied. The author and contributors are not responsible for any damages, data loss, or other issues that may arise from the use of this software. Always test in non-production environments first. By using this plugin, you acknowledge that you have read, understood, and accepted this disclaimer.
 
 ## Important Warnings
 
-### ⚠️ DELETE Folder Option - DANGEROUS!
+### DELETE Folder Option - DANGEROUS!
 
 This plugin includes a **"DELETE all files"** folder cleanup option that will **permanently remove ALL files** in the specified output folder before generating a new export.
 
@@ -26,22 +26,6 @@ This plugin includes a **"DELETE all files"** folder cleanup option that will **
 - Never use on folders containing important data
 - Consider using the safer "Move to OLD subfolder" option instead
 - The plugin only deletes **files**, not subdirectories
-
-### 📦 Automatic Module Installation
-
-When using **Excel (.xlsx)**, **PDF (.pdf)** export formats, or **Data Transforms (YAML)**, the plugin will **automatically install** the required npm packages (`exceljs`, `pdfkit`, `js-yaml`) if they are not already present.
-
-- Installation happens on first use of these formats
-- Requires internet connectivity on the xyOps Satellite server
-- First export may take 30-60 seconds while packages download
-- Packages are installed in the plugin directory
-- Subsequent exports will be instant
-
-If automatic installation fails, manually install:
-```bash
-cd /path/to/xyOps-File-Export
-npm install exceljs pdfkit js-yaml
-```
 
 ## Quick Start
 
@@ -64,8 +48,8 @@ npm install exceljs pdfkit js-yaml
 | **Markdown** | `.md` | Markdown table format | None |
 | **YAML** | `.yaml` | YAML format | None |
 | **Plain Text** | `.txt` | ASCII table format | None |
-| **Excel** | `.xlsx` | Microsoft Excel workbook | `exceljs` (auto-installed) |
-| **PDF** | `.pdf` | PDF document with table | `pdfkit` (auto-installed) |
+| **Excel** | `.xlsx` | Microsoft Excel workbook | `exceljs` (bundled) |
+| **PDF** | `.pdf` | PDF document with table | `pdfkit` (bundled) |
 | **HL7 v2.x** | `.hl7` | HL7 v2 pipe-delimited message | None |
 | **HL7 FHIR** | `.fhir.json` | FHIR Bundle with Observations | None |
 
@@ -79,10 +63,10 @@ npm install exceljs pdfkit js-yaml
 
 ### Advanced Features
 
-- **Data Transforms** - 20 transform types: filter, select, rename, sort, compute, group, mask, and more!
+- **Data Transforms** - 25 transform types: filter, select, rename, sort, compute, group, mask, if, set, and more!
 - **Custom Report Titles** - Set custom titles for HTML/Markdown/PDF reports
 - **Folder Cleanup Options** - Keep, archive to OLD/, or delete existing files
-- **Automatic Dependency Installation** - Excel, PDF, and YAML libraries install on demand
+- **NPX-Based Distribution** - Runs directly from GitHub, dependencies bundled
 - **Debug Logging** - Detailed logging in job output for troubleshooting
 
 ## Parameters
@@ -1375,14 +1359,12 @@ The HTML export creates a professionally styled table with:
 - Styled header row (blue background, white text)
 - Auto-column width
 - Proper data types (numbers, strings)
-- **Requires:** `exceljs` (auto-installed)
 
 ### PDF
 - Professional document layout
 - Title and timestamp header
 - Table format for data
 - Page breaks for large datasets
-- **Requires:** `pdfkit` (auto-installed)
 
 ### HL7 v2.x
 - Standard ORU^R01 message structure
@@ -1414,15 +1396,6 @@ The HTML export creates a professionally styled table with:
 **Solutions:**
 1. Enable "Create Folder" checkbox
 2. Create the folder manually before running
-
-### "Excel/PDF export requires..."
-
-**Cause:** Auto-installation of dependencies failed.
-
-**Solutions:**
-1. Check internet connectivity on Satellite server
-2. Install manually: `npm install exceljs pdfkit`
-3. Check npm permissions in plugin directory
 
 ### Empty or incorrect output
 

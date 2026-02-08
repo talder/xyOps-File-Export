@@ -1,0 +1,41 @@
+{
+	"name": "xyops-file-export",
+	"version": "1.4.0",
+	"private": true,
+	"description": "A versatile xyOps Action Plugin that exports job output data to multiple file formats including JSON, CSV, HTML, XML, Markdown, YAML, Plain Text, Excel, PDF, and HL7 healthcare formats. Includes 25 data transforms for filtering, sorting, formatting, and more.",
+	"author": "Tim Alderweireldt",
+	"homepage": "https://github.com/talder/xyOps-File-Export",
+	"license": "MIT",
+	"type": "commonjs",
+	"bin": {
+		"xyops-file-export": "index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/talder/xyOps-File-Export"
+	},
+	"bugs": {
+		"url": "https://github.com/talder/xyOps-File-Export/issues"
+	},
+	"keywords": [
+		"xyops",
+		"file",
+		"export",
+		"csv",
+		"json",
+		"html",
+		"excel",
+		"pdf",
+		"hl7",
+		"fhir",
+		"transforms"
+	],
+	"dependencies": {
+		"exceljs": "^4.4.0",
+		"pdfkit": "^0.15.2",
+		"js-yaml": "^4.1.0"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	}
+}

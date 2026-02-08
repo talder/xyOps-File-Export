@@ -10,93 +10,11 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
-// Optional dependencies (loaded on demand)
-let exceljs = null;
-let PDFDocument = null;
-let jsYaml = null;
-
-// Get plugin directory for npm install
-const pluginDir = __dirname;
-
-// Try to install a package
-function tryInstallPackage(packageName) {
-    try {
-        console.error(`File Export: Installing ${packageName}...`);
-        execSync(`npm install ${packageName} --save`, {
-            cwd: pluginDir,
-            stdio: ['pipe', 'pipe', 'pipe'],
-            timeout: 120000 // 2 minute timeout
-        });
-        console.error(`File Export: ${packageName} installed successfully`);
-        return true;
-    } catch (e) {
-        console.error(`File Export: Failed to install ${packageName}: ${e.message}`);
-        return false;
-    }
-}
-
-// Try to load optional dependencies (auto-install if missing)
-function loadExcelJS() {
-    if (exceljs === null) {
-        try {
-            exceljs = require('exceljs');
-        } catch (e) {
-            // Try to auto-install
-            if (tryInstallPackage('exceljs')) {
-                try {
-                    exceljs = require('exceljs');
-                } catch (e2) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-function loadPDFKit() {
-    if (PDFDocument === null) {
-        try {
-            PDFDocument = require('pdfkit');
-        } catch (e) {
-            // Try to auto-install
-            if (tryInstallPackage('pdfkit')) {
-                try {
-                    PDFDocument = require('pdfkit');
-                } catch (e2) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-function loadJsYaml() {
-    if (jsYaml === null) {
-        try {
-            jsYaml = require('js-yaml');
-        } catch (e) {
-            // Try to auto-install
-            if (tryInstallPackage('js-yaml')) {
-                try {
-                    jsYaml = require('js-yaml');
-                } catch (e2) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return true;
-}
+// Dependencies (installed via npm)
+const exceljs = require('exceljs');
+const PDFDocument = require('pdfkit');
+const jsYaml = require('js-yaml');
 
 // Read JSON from STDIN
 async function readStdin() {
@@ -178,10 +96,6 @@ function flattenObject(obj, prefix = '', result = {}) {
 function parseTransformsYaml(yamlString) {
     if (!yamlString || typeof yamlString !== 'string' || yamlString.trim() === '') {
         return [];
-    }
-    
-    if (!loadJsYaml()) {
-        throw new Error('YAML parsing requires js-yaml. Run: npm install js-yaml');
     }
     
     const config = jsYaml.load(yamlString);
@@ -1930,12 +1844,8 @@ function toTXT(data, title = 'Exported Data') {
     return txt;
 }
 
-// Convert data to Excel format (requires exceljs)
+// Convert data to Excel format
 async function toExcel(data, title = 'Exported Data') {
-    if (!loadExcelJS()) {
-        throw new Error('Excel export requires exceljs. Run: npm install exceljs');
-    }
-    
     const workbook = new exceljs.Workbook();
     workbook.creator = 'xyOps File Export';
     workbook.created = new Date();
@@ -1996,12 +1906,8 @@ async function toExcel(data, title = 'Exported Data') {
     return await workbook.xlsx.writeBuffer();
 }
 
-// Convert data to PDF format (requires pdfkit)
+// Convert data to PDF format
 function toPDF(data, title = 'Exported Data') {
-    if (!loadPDFKit()) {
-        throw new Error('PDF export requires pdfkit. Run: npm install pdfkit');
-    }
-    
     return new Promise((resolve, reject) => {
         const chunks = [];
         const doc = new PDFDocument({ margin: 50 });
